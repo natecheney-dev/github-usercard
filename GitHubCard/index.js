@@ -26,7 +26,7 @@ const getUserData = async (userStuff) => {
     console.log("We're back!");
   }
 }
-getUserData();
+
 
 /*
   X STEP 2: Inspect and study the data coming back, this is YOUR
@@ -84,6 +84,7 @@ followersArray.forEach(item =>{
 function receiver({name, userName, profile, followers, following, bio, cardImgUrl}) {
   const humanCard = document.createElement('div');
   const image = document.createElement('img');
+  const cardDiv = document.createElement('div');
   const receivedName = document.createElement('h3');
   const receivedUserName = document.createElement('p');
   const receivedProfile = document.createElement('p');
@@ -91,36 +92,31 @@ function receiver({name, userName, profile, followers, following, bio, cardImgUr
   const receivedFollowers = document.createElement('p');
   const receivedFollowing = document.createElement('p');
   const receivedBio = document.createElement('p');
+  
+  
 
   receivedName.textContent = `Name: ${name}`;
   receivedUserName.textContent = `Username: ${userName}`;
+  receivedProfileLink.href = profile;
   receivedProfileLink.textContent = `Profile Link: ${profile}`;
-  receivedFollowers.textContent = `Followers: ${followers}`;
-  receivedFollowing.textContent = `Following: ${following}`;
+  receivedFollowers.textContent = `Followers: ${followers.length}`;
+  receivedFollowing.textContent = `Following: ${following.length}`;
   receivedBio.textContent = `Bio: ${bio}`;
   image.src = cardImgUrl;
 
-  image.classList.add('card')
-  receivedName.classList.add('card');
-  receivedUserName.classList.add('card');
-  receivedBio.classList.add('card');
-  receivedProfile.classList.add('card');
-  receivedFollowers.classList.add('card');
-  receivedFollowing.classList.add('card');
   
-
-
-  
-  
+  humanCard.className = 'card';
+  receivedName.className = 'name';
+  receivedUserName.className = 'username'; 
   
   humanCard.appendChild(image);
-  
-  humanCard.appendChild(receivedName);
-  humanCard.appendChild(receivedUserName);
-  humanCard.appendChild(receivedBio);
-  humanCard.appendChild(receivedProfile);
-  humanCard.appendChild(receivedFollowers);
-  humanCard.appendChild(receivedFollowing);
+  humanCard.appendChild(cardDiv);
+  cardDiv.appendChild(receivedName);
+  cardDiv.appendChild(receivedUserName);
+  cardDiv.appendChild(receivedBio);
+  cardDiv.appendChild(receivedProfile);
+  cardDiv.appendChild(receivedFollowers);
+  cardDiv.appendChild(receivedFollowing);
   
   receivedProfile.appendChild(receivedProfileLink);
 
